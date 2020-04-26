@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+html,
+body{
+    margin:0;
+    height: 100%;
+    font-family: 'Opens Sans', sans-serif;
+    font-size: 15px;
+    color:#000;
+}
+a {
+    color: #000;
+    text-decoration: none;
+    font-family: 'Opens Sans', sans-serif;
+    font-size: small;
+    font-size: 15px;
+}
+a:hover {
+    color: #8d8d8d;
+    text-decoration: underline;
+    font-family: 'Opens Sans', sans-serif;
+    font-size: small;
+}
+button:hover{
+    border-color: #8d8d8d;
+}
+input:focus {
+    outline-width: 0;
+}
+
+.viewport{
+    margin:0;
+    min-height: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "header header header"
+    "blank-left main blank-right"
+    "footer footer footer";
+    
+}
+.navbar ul{
+    list-style-type: none;
+    padding : 0;
+    margin: 5px 10px 5px 10px;
+}
+.navbar li{
+    display: inline;
+    margin: 0.7em;
+}
+#top-left{
+    grid-area: header;
+    justify-self: left;
+    display: flex;
+    align-items: center;
+    top: 0;
+}
+#top-right{
+    grid-area: header;
+    justify-self: right;
+    display: flex;
+    align-items: center;
+    top:0;
+}
+#bottom-left{
+    grid-area: footer;
+    justify-self: left;
+    bottom:0;
+}
+#bottom-right{
+    grid-area: footer;
+    justify-self: right;
+    bottom: 0;
+}
+.content{
+    grid-area: main;
+    margin-top: 9em;;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#logo{
+    height:92px;
+    width: 272px;
+}
+#search-controls{
+    padding: 2em;
+    width: 600px;
+}
+#search-bar{
+    flex: 1;
+    align-items: center;
+    height: 40px;
+    width: 566px;
+    display: flex;
+    padding: 5px 8px 5px 8px;
+    padding-top: 5px;
+    padding-right: 8px;
+    padding-bottom: 0px;
+    padding-left: 14px;
+    padding-left: 14px;
+    border-radius: 50px;
+    border: 1px solid #cccccc;
+}
+#search-input{
+    border-color: transparent;
+    height: 80%;
+    width: 90%;
+    padding: 2px;
+}
+#glass{
+    justify-self: start;
+}
+#mic{
+    justify-self: end;
+}
+#button-container{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.search-button{
+    width: 140px;
+    height: 36px;
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    color: #5F6368;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 15px;
+}
+
+#additional-languages{
+    font-family: 'Open Sans',sans-serif;
+}
