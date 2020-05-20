@@ -1,0 +1,34 @@
+html{
+    background: black;
+    font-family: 'Press Start 2P';
+}
+.gameboard{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "field field score"
+    "field field score"
+    "input input input";
+}
+
+.controls{
+    grid-area: input;
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+}
+.control{
+    display: flexbox;
+    width: 8rem;
+    height: 8rem;
+    border: solid blue;
+    color: cornsilk;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.control-img{
+    height:5rem;
+    width: 5rem;
+}

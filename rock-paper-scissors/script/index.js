@@ -84,4 +84,4 @@ function game(){
         console.log("YOU WIN!");
     }
 }
-game();
+//game();
