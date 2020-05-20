@@ -1,9 +1,13 @@
-html{
+html,body{
     background: black;
+    margin:0;
+    height: 100%;
     font-family: 'Press Start 2P';
 }
+
 .gameboard{
     display: grid;
+    height : 100%;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
@@ -12,8 +16,25 @@ html{
     "input input input";
 }
 
+.field{
+    grid-area: field;
+    border: solid blue;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.scoreboard{
+    grid-area: score;
+    border: solid blue;
+    border-radius: 1rem;  
+    margin: 1rem;
+}
+
 .controls{
     grid-area: input;
+    border: solid blue;
+    border-radius: 1rem;
+    margin: 1rem;
     display: flex;
     flex:1;
     align-items: center;
@@ -23,7 +44,10 @@ html{
     display: flexbox;
     width: 8rem;
     height: 8rem;
-    border: solid blue;
+    border: solid cornsilk;
+    border-radius: 1rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
     color: cornsilk;
     text-align: center;
     font-size: 0.9rem;
