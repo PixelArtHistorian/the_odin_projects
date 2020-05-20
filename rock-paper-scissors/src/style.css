@@ -18,22 +18,25 @@ html,body{
 
 .field{
     grid-area: field;
-    border: solid blue;
+    border: solid  rgba(4, 4, 165, 0.822);
     border-radius: 1rem;
+    border-width: 0.6rem;
     margin: 1rem;
 }
 
 .scoreboard{
     grid-area: score;
-    border: solid blue;
-    border-radius: 1rem;  
+    border: solid rgba(4, 4, 165, 0.822);
+    border-radius: 1rem;
+    border-width: 0.6rem;  
     margin: 1rem;
 }
 
 .controls{
     grid-area: input;
-    border: solid blue;
+    border: solid rgba(4, 4, 165, 0.822);
     border-radius: 1rem;
+    border-width: 0.6rem;
     margin: 1rem;
     display: flex;
     flex:1;
