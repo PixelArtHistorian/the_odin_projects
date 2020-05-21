@@ -13,7 +13,7 @@ html,body{
     grid-template-areas: 
     "field field score"
     "field field score"
-    "input input input";
+    "input input score";
 }
 
 .field{
@@ -22,6 +22,8 @@ html,body{
     border-radius: 1rem;
     border-width: 0.6rem;
     margin: 1rem;
+    padding: 2rem;
+    color: cornsilk;
 }
 
 .scoreboard{
@@ -30,6 +32,8 @@ html,body{
     border-radius: 1rem;
     border-width: 0.6rem;  
     margin: 1rem;
+    padding: 2rem;
+    color: cornsilk;
 }
 
 .controls{
@@ -49,8 +53,8 @@ html,body{
     height: 8rem;
     border: solid cornsilk;
     border-radius: 1rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
     color: cornsilk;
     text-align: center;
     font-size: 0.9rem;
@@ -58,4 +62,8 @@ html,body{
 .control-img{
     height:5rem;
     width: 5rem;
+}
+.scoreHeader{
+    color: purple;
+    font-size: 1.1rem;
 }

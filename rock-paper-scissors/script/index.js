@@ -1,16 +1,8 @@
-function computerPlay(){
+function getCpuMove(){
     return (Math.trunc(Math.random()*10))%3;
 }
-function playerPlay(){
-    let move;
+function getPlayerMove(move){
     let moveNum;
-    let message = "What's your move? ROCK, PAPER or SCISSORS?";
-    while(!validateMove(move)){
-        move = prompt(message).toLowerCase();
-        if(!validateMove(move)){
-            alert("That's not a MOVE!")
-        }
-    }
     switch(move){
         case "rock":
             moveNum = 0
@@ -23,13 +15,6 @@ function playerPlay(){
             break;
     }
     return moveNum;   
-}
-function validateMove(move){
-    if(move === "rock" || move ==="paper" || move ==="scissors"){
-        return true;
-    }else{
-        return false;
-    }
 }
 function getReadableMove(move){
     let readableMove;
@@ -46,42 +31,79 @@ function getReadableMove(move){
     }
     return readableMove;
 }
-function playRound(playerMove, cpuMove){
+function logScore(result, playerMove, cpuMove){
+    let scoreBoard = document.querySelector('.scoreboard');
+    let header = document.querySelector('.scoreHeader');
+    let roundResult = document.createElement('p');
+    switch(result){
+        case 0:
+             log = `${getReadableMove(playerMove)} VS 
+             ${getReadableMove(cpuMove)}! That's a draw!`;
+             break;
+         case 1:
+            log = `${getReadableMove(playerMove)} VS 
+            ${getReadableMove(cpuMove)}! That's a WIN!`;
+            playerScore+=1;
+            break;
+         case 2:
+            log = `${getReadableMove(playerMove)} VS 
+            ${getReadableMove(cpuMove)}! That's a LOSS!`;
+            cpuScore+=1;
+            break;
+     }
+     header.textContent = `PLAYER:${playerScore} CPU:${cpuScore}`;
+     roundResult.textContent = log;
+     scoreBoard.appendChild(roundResult);
+}
+
+function checkWinner(){
+    if(playerScore == 5 || cpuScore ==5){
+        let scoreBoard = document.querySelector('.scoreboard');
+        let matchResult = document.createElement('p');
+        if(playerScore ==5){
+            matchResult.textContent = "YOU WIN! Press a button to play again!"
+            matchResult.style.color = 'gold'
+        }else{
+            matchResult.textContent = "YOU LOSE! Press a button to play again!"
+            matchResult.style.color = 'red';
+        }
+        scoreBoard.appendChild(matchResult);
+        return true;
+    }else{
+        return false;
+    }
+}
+function resetGame(){
+    playerScore = 0;
+    cpuScore = 0;
+    let scoreBoard = document.querySelector('.scoreboard');
+    let header =  document.querySelector('.scoreHeader');
+    while (scoreBoard.lastChild) {
+        scoreBoard.removeChild(scoreBoard.lastChild);
+    }
+    scoreBoard.appendChild(header);
+    console.log(scoreBoard);
+}
+function playRound(e){
     let result;
+    if(checkWinner()){
+        resetGame();
+    }
+    playerMove = getPlayerMove(this.dataset.control);
+    cpuMove = getCpuMove();
     if(playerMove === cpuMove){
-        console.log(`${getReadableMove(playerMove)} VS 
-                ${getReadableMove(cpuMove)}! That's a draw!`);
         result = 0;
     }else if((cpuMove+1)%3 === playerMove){
-        console.log(`${getReadableMove(playerMove)} VS 
-                ${getReadableMove(cpuMove)}! That's a WIN!`);
         result = 1;
     }else{
-        console.log(`${getReadableMove(playerMove)} VS 
-                ${getReadableMove(cpuMove)}! That's a LOSS!`);
         result = 2; 
     }
-    return result;
+    logScore(result, playerMove, cpuMove);
+    checkWinner();
 }
-function game(){
-    let playerScore = 0;
-    let cpuScore = 0;
-    for(let i = 0; i < 5; i++){
-        let roundResult = playRound(playerPlay(), computerPlay())
-        if(roundResult === 1){
-            playerScore++;
-        }else if (roundResult ===2){
-            cpuScore++;
-        }
-        console.log(playerScore);
-        console.log(cpuScore);
-    }
-    if(playerScore === cpuScore){
-        console.log("IT'S A DRAW!");
-    }else if(playerScore < cpuScore){
-        console.log("YOU LOSE!");
-    }else{
-        console.log("YOU WIN!");
-    }
-}
-//game();
+
+let playerScore = 0;
+let cpuScore = 0;
+const controls = document.querySelectorAll('.control');
+console.log(controls);
+controls.forEach(control => control.addEventListener('click',playRound));
