@@ -1,0 +1,69 @@
+html,body{
+    background: black;
+    margin:0;
+    height: 100%;
+    font-family: 'Press Start 2P';
+}
+
+.gameboard{
+    display: grid;
+    height : 100%;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "field field score"
+    "field field score"
+    "input input score";
+}
+
+.field{
+    grid-area: field;
+    border: solid  rgba(4, 4, 165, 0.822);
+    border-radius: 1rem;
+    border-width: 0.6rem;
+    margin: 1rem;
+    padding: 2rem;
+    color: cornsilk;
+}
+
+.scoreboard{
+    grid-area: score;
+    border: solid rgba(4, 4, 165, 0.822);
+    border-radius: 1rem;
+    border-width: 0.6rem;  
+    margin: 1rem;
+    padding: 2rem;
+    color: cornsilk;
+}
+
+.controls{
+    grid-area: input;
+    border: solid rgba(4, 4, 165, 0.822);
+    border-radius: 1rem;
+    border-width: 0.6rem;
+    margin: 1rem;
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+}
+.control{
+    display: flexbox;
+    width: 8rem;
+    height: 8rem;
+    border: solid cornsilk;
+    border-radius: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    color: cornsilk;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.control-img{
+    height:5rem;
+    width: 5rem;
+}
+.scoreHeader{
+    color: purple;
+    font-size: 1.1rem;
+}
