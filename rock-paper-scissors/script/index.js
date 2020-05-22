@@ -58,7 +58,7 @@ function logScore(result, playerMove, cpuMove){
 
 function checkWinner(){
     if(playerScore == 5 || cpuScore ==5){
-        let scoreBoard = document.querySelector('.scoreboard');
+        let scoreboard = document.querySelector('.scoreboard');
         let matchResult = document.createElement('p');
         if(playerScore ==5){
             matchResult.textContent = "YOU WIN! Press a button to play again!"
@@ -67,7 +67,7 @@ function checkWinner(){
             matchResult.textContent = "YOU LOSE! Press a button to play again!"
             matchResult.style.color = 'red';
         }
-        scoreBoard.appendChild(matchResult);
+        scoreboard.appendChild(matchResult);
         return true;
     }else{
         return false;
@@ -77,20 +77,53 @@ function resetGame(){
     playerScore = 0;
     cpuScore = 0;
     let scoreBoard = document.querySelector('.scoreboard');
+    let field = document.querySelector('.field');
     let header =  document.querySelector('.scoreHeader');
+    let roundContainer = document.querySelector('.round-container')
     while (scoreBoard.lastChild) {
         scoreBoard.removeChild(scoreBoard.lastChild);
     }
+    while(field.lastChild){
+        field.removeChild(field.lastChild);
+    }
     scoreBoard.appendChild(header);
+    field.append(roundContainer);
     console.log(scoreBoard);
 }
+function getMoveImg(moveIndex){ 
+    let imgPath;
+    switch(moveIndex){
+        case 0:
+            imgPath = "../graphics/Rock.png";
+            break;
+         case 1:
+            imgPath = "../graphics/Paper.png";
+            break;
+         case 2:
+            imgPath = "../graphics/Scissors.png";
+            break; 
+     }
+     return imgPath;
+}
+function setPlayerMove(playerMove){
+    let playerImg = document.getElementById('player-img');
+    playerImg.setAttribute('src', getMoveImg(playerMove));
+}
+
+function setCpuMove(cpuMove){
+    let cpuImg = document.getElementById('cpu-img');
+    cpuImg.setAttribute('src', getMoveImg(cpuMove));
+}
+
 function playRound(e){
     let result;
     if(checkWinner()){
         resetGame();
     }
     playerMove = getPlayerMove(this.dataset.control);
+    setPlayerMove(playerMove);
     cpuMove = getCpuMove();
+    setCpuMove(cpuMove);
     if(playerMove === cpuMove){
         result = 0;
     }else if((cpuMove+1)%3 === playerMove){

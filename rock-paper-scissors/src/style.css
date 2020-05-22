@@ -26,6 +26,33 @@ html,body{
     color: cornsilk;
 }
 
+.round-container{
+    display: flex;
+    grid-area: round;
+    border: solid goldenrod;
+    border-radius: 1rem;
+    border-width: 0.6rem;
+    margin: 1rem;
+    height: 90%;
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+}
+
+.round-control{
+    display: flexbox;
+    width: 14rem;
+    height: 14rem;
+    border: solid  rgba(165, 4, 138, 0.699);
+    border-radius: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    color: cornsilk;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
 .scoreboard{
     grid-area: score;
     border: solid rgba(4, 4, 165, 0.822);
@@ -63,7 +90,17 @@ html,body{
     height:5rem;
     width: 5rem;
 }
+.move-img{
+    height:10rem;
+    width: 10rem;
+}
+
 .scoreHeader{
-    color: purple;
+    color: rgba(165, 4, 138, 0.699);
     font-size: 1.1rem;
+}
+.versus{
+    margin: 3rem;
+    font-size: 3rem;
+    color: rgba(168, 29, 29, 0.822);
 }
