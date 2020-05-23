@@ -31,6 +31,21 @@ function getReadableMove(move){
     }
     return readableMove;
 }
+function getMoveImg(moveIndex){ 
+    let imgPath;
+    switch(moveIndex){
+        case 0:
+            imgPath = "../graphics/Rock.png";
+            break;
+         case 1:
+            imgPath = "../graphics/Paper.png";
+            break;
+         case 2:
+            imgPath = "../graphics/Scissors.png";
+            break; 
+     }
+     return imgPath;
+}
 function logScore(result, playerMove, cpuMove){
     let scoreBoard = document.querySelector('.scoreboard');
     let header = document.querySelector('.scoreHeader');
@@ -55,30 +70,45 @@ function logScore(result, playerMove, cpuMove){
      roundResult.textContent = log;
      scoreBoard.appendChild(roundResult);
 }
-
-function checkWinner(){
-    if(playerScore == 5 || cpuScore ==5){
-        let scoreboard = document.querySelector('.scoreboard');
-        let matchResult = document.createElement('p');
-        if(playerScore ==5){
-            matchResult.textContent = "YOU WIN! Press a button to play again!"
-            matchResult.style.color = 'gold'
-        }else{
-            matchResult.textContent = "YOU LOSE! Press a button to play again!"
-            matchResult.style.color = 'red';
-        }
-        scoreboard.appendChild(matchResult);
-        return true;
+function logWinner(){
+    let scoreboard = document.querySelector('.scoreboard');
+    let matchResult = document.createElement('p');
+    let winner;
+    if(playerScore > cpuScore){
+        matchResult.textContent = "YOU WIN! Press a button to play again!"
+        matchResult.style.color = 'gold'
+        winner = 'player'
     }else{
+        matchResult.textContent = "YOU LOSE! Press a button to play again!"
+        matchResult.style.color = 'red';
+        winner = 'cpu'
+    }
+    scoreboard.appendChild(matchResult);        
+    switch(winner){
+        case('player'):
+            playSoundFX('win');
+            break;
+        case('cpu'):
+            playSoundFX('lose');
+            break;
+    } 
+}
+function checkWinner(){
+    if(playerScore === 5 || cpuScore ===5){
+        return true;
+    }
+    else{
         return false;
     }
 }
 function resetGame(){
     playerScore = 0;
     cpuScore = 0;
+    roundcounter = 0;
     let scoreBoard = document.querySelector('.scoreboard');
     let field = document.querySelector('.field');
     let header =  document.querySelector('.scoreHeader');
+    let counter = document.querySelector('.round-counter');
     let roundContainer = document.querySelector('.round-container')
     while (scoreBoard.lastChild) {
         scoreBoard.removeChild(scoreBoard.lastChild);
@@ -87,43 +117,53 @@ function resetGame(){
         field.removeChild(field.lastChild);
     }
     scoreBoard.appendChild(header);
-    field.append(roundContainer);
+    field.appendChild(counter);
+    field.appendChild(roundContainer);
     console.log(scoreBoard);
 }
-function getMoveImg(moveIndex){ 
-    let imgPath;
-    switch(moveIndex){
-        case 0:
-            imgPath = "../graphics/Rock.png";
-            break;
-         case 1:
-            imgPath = "../graphics/Paper.png";
-            break;
-         case 2:
-            imgPath = "../graphics/Scissors.png";
-            break; 
-     }
-     return imgPath;
+function undoSelection(){
+    const controls = document.querySelectorAll('.control');
+    controls.forEach(control =>{
+        if(control.classList.contains('selected')){
+            control.classList.remove('selected');
+        }
+    })
 }
-function setPlayerMove(playerMove){
+function setPlayerMove(playerMove, control){
+    let playerControl = document.querySelector(`.control[data-control="${control}"]`);
+    playerControl.classList.add('selected');
     let playerImg = document.getElementById('player-img');
     playerImg.setAttribute('src', getMoveImg(playerMove));
 }
-
 function setCpuMove(cpuMove){
     let cpuImg = document.getElementById('cpu-img');
     cpuImg.setAttribute('src', getMoveImg(cpuMove));
 }
-
+function playSoundFX(soundId){
+    let audio = document.querySelector(`audio[data-control="${soundId}"]`);
+    if(!audio){
+        return;
+    }else{
+        audio.currentTime = 0;
+        audio.play();
+    }
+}
+function updateRoundCounter(){
+    roundcounter +=1;
+    let counter = document.querySelector('.round-counter');
+    counter.textContent = `ROUND: ${roundcounter}`;
+}
 function playRound(e){
-    let result;
     if(checkWinner()){
         resetGame();
     }
+    undoSelection();
     playerMove = getPlayerMove(this.dataset.control);
-    setPlayerMove(playerMove);
+    playSoundFX('select');
+    setPlayerMove(playerMove, this.dataset.control);
     cpuMove = getCpuMove();
     setCpuMove(cpuMove);
+    let result;
     if(playerMove === cpuMove){
         result = 0;
     }else if((cpuMove+1)%3 === playerMove){
@@ -132,9 +172,12 @@ function playRound(e){
         result = 2; 
     }
     logScore(result, playerMove, cpuMove);
-    checkWinner();
+    if(checkWinner()){
+        logWinner();
+    }
+    updateRoundCounter();    
 }
-
+let roundcounter = 0;
 let playerScore = 0;
 let cpuScore = 0;
 const controls = document.querySelectorAll('.control');

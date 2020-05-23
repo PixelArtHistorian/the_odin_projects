@@ -18,12 +18,24 @@ html,body{
 
 .field{
     grid-area: field;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-areas: 
+    "counter"
+    "round";
+    align-items: center;
     border: solid  rgba(4, 4, 165, 0.822);
     border-radius: 1rem;
     border-width: 0.6rem;
     margin: 1rem;
     padding: 2rem;
     color: cornsilk;
+}
+.round-counter{
+    grid-area: counter;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
 }
 
 .round-container{
@@ -44,7 +56,7 @@ html,body{
     display: flexbox;
     width: 14rem;
     height: 14rem;
-    border: solid  rgba(165, 4, 138, 0.699);
+    border: solid  rgba(247, 1, 206, 0.699);
     border-radius: 1rem;
     margin-left: 3rem;
     margin-right: 3rem;
@@ -85,6 +97,11 @@ html,body{
     color: cornsilk;
     text-align: center;
     font-size: 0.9rem;
+    transition: all 0.07s ease;
+}
+.selected{
+    scale: 1.2;
+    border: solid goldenrod;
 }
 .control-img{
     height:5rem;
@@ -96,11 +113,11 @@ html,body{
 }
 
 .scoreHeader{
-    color: rgba(165, 4, 138, 0.699);
+    color: rgba(247, 1, 206, 0.699);;
     font-size: 1.1rem;
 }
 .versus{
     margin: 3rem;
     font-size: 3rem;
-    color: rgba(168, 29, 29, 0.822);
+    color: red;
 }
