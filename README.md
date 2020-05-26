@@ -5,3 +5,4 @@ Project Checklist (so far):
 - [X] Google homepage clone
 - [ ] Google search result clone
 - [X] Rock-paper-scissors 1
+- [X] Rock-paper-scissors 2
