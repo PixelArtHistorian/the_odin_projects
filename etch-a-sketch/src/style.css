@@ -1,0 +1,21 @@
+:root{
+    --grid-size: 1;
+}
+
+#drawing-board{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-size),1fr);
+    grid-template-columns: repeat(var(--grid-size),1fr);
+}
+
+.square{
+    height: 1rem;
+    width: 1rem;
+    background-color: blue;
+}
+
+.hover{
+    background-color:red
+}
