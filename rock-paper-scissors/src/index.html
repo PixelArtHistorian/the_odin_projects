@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ROCK PAPER SCISSORS GAME!</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../src/style.css">
+        <link rel="stylesheet" 
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    </head>
+    <body>
+        <div class="gameboard">
+            <div class="field">
+                <div class="round-counter">ROUND: 0</div>
+                <div class="round-container">
+                    <div class="round-control">
+                        <p>Player1</p>
+                        <img id="player-img" class="move-img">
+                    </div>
+                    <div class="versus">VS</div>
+                    <div class="round-control">
+                        <p>CPU</p>
+                        <img id="cpu-img" class="move-img">
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <div data-control="rock" class="control">
+                    <div>
+                        <img class="control-img" src="../graphics/Rock.png">
+                        <p>ROCK</p>
+                    </div>
+                </div>
+                <div data-control="paper" class="control">
+                    <div>
+                        <img class="control-img" src="../graphics/Paper.png">
+                        <p>PAPER</p>
+                    </div>
+                </div>
+                <div data-control="scissors" class="control">
+                    <div>
+                        <img class="control-img" src="../graphics/Scissors.png">
+                        <p>SCISSORS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scoreboard">
+                <p class="scoreHeader">Press a button to PLAY!</p>
+            </div>
+        </div>
+        <audio data-control="select" src="../sounds/select.wav"></audio>
+        <audio data-control="win" src="../sounds/win.wav"></audio>
+        <audio data-control="lose" src="../sounds/lose.wav"></audio>
+        <script src="../script/index.js"></script>
+    </body>
+</html>
