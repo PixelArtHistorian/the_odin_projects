@@ -1,21 +1,55 @@
 :root{
     --grid-size: 1;
 }
-
-#drawing-board{
+body{
+    font-family: 'Indie Flower', cursive;
+}
+button{
+    font-family: 'Indie Flower', cursive;
+}
+h1{
+    color: crimson;
+    font-size: 3rem;
+}
+.board{
+    margin: auto;
+    display: grid;
+    border-radius: 10px;
     height: 100%;
-    width: 100%;
+    width: 80vh;
+    grid-template-rows: 0.5fr 0.5fr 3fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "header" 
+    "refresh"
+    "drawing";
+}
+.header{
+    margin: auto;
+}
+.refresh-button{
+    margin: auto;
+    background-color: whitesmoke;
+    border: transparent;
+    border-radius: 10px;
+    color: black;
+    font-size: 1.5rem;
+}
+.drawing-board{
+    margin: auto;
+    border: solid black;
+    border-radius: 10px;
+    height: 70vh;
+    width: 70vh;
     display: grid;
     grid-template-rows: repeat(var(--grid-size),1fr);
     grid-template-columns: repeat(var(--grid-size),1fr);
 }
 
-.square{
-    height: 1rem;
-    width: 1rem;
-    background-color: blue;
+.pixel{
+    background-color: whitesmoke;
 }
 
 .hover{
-    background-color:red
+    background-color: black;
 }
