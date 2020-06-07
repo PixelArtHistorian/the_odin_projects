@@ -108,6 +108,8 @@ html,body{
     width: 5rem;
 }
 .move-img{
+    margin-left: auto;
+    margin-right: auto;
     height:10rem;
     width: 10rem;
 }
