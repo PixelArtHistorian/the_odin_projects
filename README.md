@@ -6,3 +6,4 @@ Project Checklist (so far):
 - [ ] Google search result clone
 - [X] Rock-paper-scissors 1
 - [X] Rock-paper-scissors 2
+- [X] Etch-a-sketch
