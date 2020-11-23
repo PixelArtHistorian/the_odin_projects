@@ -1,7 +1,30 @@
 body{
     font-family: Arial, sans-serif;
+    margin: 0%;
+    height: 100vh;
+}
+#page{
+    display: grid;
     grid-template-areas: 
     "header header header"
-    "blank middle blank"
+    "middle middle middle"
     "footer footer footer";
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#top-nav{
+    grid-area: header;
+    display: flex;
+}
+#top-left-nav{
+    display: flex;
+}
+#top-right-nav{
+    display: flex;
+}
+#middle-container{
+    grid-area: middle;
+}
+#bottom-nav{
+    grid-area: footer;
 }
